@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocaine smasher 420", "cocaine smasher 420\cocaine smasher 420\cocaine smasher 420.csproj", "{8D8726C2-4E0B-45B1-9317-870895DA98A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bug Smasher", "cocaine smasher 420\cocaine smasher 420\Bug Smasher.csproj", "{8D8726C2-4E0B-45B1-9317-870895DA98A7}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "cocaine smasher 420Content", "cocaine smasher 420\cocaine smasher 420Content\cocaine smasher 420Content.contentproj", "{D5FD2DB3-6F40-4801-8D78-AC221A351224}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bug SmasherContent", "cocaine smasher 420\cocaine smasher 420Content\Bug SmasherContent.contentproj", "{D5FD2DB3-6F40-4801-8D78-AC221A351224}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

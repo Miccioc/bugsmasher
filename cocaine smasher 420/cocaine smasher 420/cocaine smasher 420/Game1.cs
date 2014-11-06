@@ -18,7 +18,7 @@ namespace cocaine_smasher_420
         Texture2D background, spritesheet;
         Random rand = new Random(System.Environment.TickCount);
         List<Bug> bugs = new List<Bug>();
-        int bugNum = 100;
+        int bugNum = 50;
 
         public Game1()
         {
@@ -30,7 +30,8 @@ namespace cocaine_smasher_420
         
         protected override void Initialize()
         {
-            
+            this.Window.Title=("BugSmasher");
+            this.Window.AllowUserResizing = true;
 
             base.Initialize();
         }
@@ -66,7 +67,7 @@ namespace cocaine_smasher_420
 
         protected override void Update(GameTime gameTime)
         {
-            
+            IsMouseVisible = true;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 

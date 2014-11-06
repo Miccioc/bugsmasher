@@ -118,9 +118,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cocaine smasher 420Content\cocaine smasher 420Content.contentproj">
-      <Name>cocaine_smasher_420Content</Name>
+    <ProjectReference Include="..\cocaine smasher 420Content\Bug SmasherContent.contentproj">
+      <Name>Bug SmasherContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{D5FD2DB3-6F40-4801-8D78-AC221A351224}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

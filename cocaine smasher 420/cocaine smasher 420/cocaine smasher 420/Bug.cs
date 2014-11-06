@@ -19,7 +19,8 @@ namespace cocaine_smasher_420
     {
         public BugMoods mood = BugMoods.Normal;
         private Random rand = new Random((int)DateTime.UtcNow.Ticks);
-     
+        float timeRemaining = 0.0f;
+        float TimePerNewTarget = 0.20f;
         public Bug(
            Vector2 location,
            Texture2D texture,
@@ -27,6 +28,7 @@ namespace cocaine_smasher_420
            Vector2 velocity)
             : base(location, texture, initialFrame, velocity)
         {
+            System.Threading.Thread.Sleep(2);
         }
 
         public override void Update(GameTime gameTime)
@@ -34,14 +36,27 @@ namespace cocaine_smasher_420
           if(Location.Y < -50 && velocity.Y <0) velocity *= new Vector2(1,-1);
           if (Location.Y > 470 && velocity.Y > 0) velocity *= new Vector2(1, -1);
 
-          Vector2 target = new Vector2(Location.X + 400, Location.Y + rand.Next(-100, 100));
-          Vector2 vel = target -Location;
-          vel.Normalize();
-          vel *= 100;
-          Velocity = vel;
-          Rotation = (float)Math.Atan2(vel.Y, vel.X);
-            
+
+          if (timeRemaining == 0.0f)
+          {
+              NewTarget();
+              timeRemaining = TimePerNewTarget;
+          }
+
+          
+          timeRemaining = MathHelper.Max(0, timeRemaining - (float)gameTime.ElapsedGameTime.TotalSeconds);
+
             base.Update(gameTime);
+        }
+
+        public void NewTarget()
+        {
+            Vector2 target = new Vector2(Location.X + 400, Location.Y + rand.Next(-100, 100));
+            Vector2 vel = target - Location;
+            vel.Normalize();
+            vel *= 90;
+            Velocity = vel;
+            Rotation = (float)Math.Atan2(vel.Y, vel.X);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
