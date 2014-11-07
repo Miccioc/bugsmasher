@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace cocaine_smasher_420
+namespace BugSmasher
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
@@ -23,8 +23,14 @@ namespace cocaine_smasher_420
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-
+            graphics.PreferredBackBufferHeight = 988;
+            graphics.PreferredBackBufferWidth = 1680;
+            
+            graphics.ApplyChanges();
+            
             Content.RootDirectory = "Content";
+
+            
         }
 
         
@@ -49,7 +55,7 @@ namespace cocaine_smasher_420
             {
                 int bugX = rand.Next(0, 3);
                 int bugY = rand.Next(0, 2);
-                int Y = rand.Next(-40, 40);
+                int Y = rand.Next(-40, 100);
                 if (Y == 10) Y=10;
                 Bug bug = new Bug(new Vector2 (rand.Next(-400,-50),rand.Next(50,400)), spritesheet, new Rectangle(64*bugX, 64*bugY, 64, 64), new Vector2(rand.Next(40, 150),Y));
                 bugs.Add(bug);
@@ -78,11 +84,10 @@ namespace cocaine_smasher_420
                 bugs[i].mood = BugMoods.Normal;
                 if (bugs[i].Location.X > this.Window.ClientBounds.Width) 
                 {
-                    bugs[i].Velocity *= new Vector2(-1, 1);
-                    bugs[i].FlipHorizontal = true; 
+                
                 }
 
-                for (int j = 0; j < bugs.Count; j++)
+                for (int j = 0; j < bugNum; j++)
                 {
                    
                     if (bugs[i].IsBoxColliding(bugs[j].BoundingBoxRect))
@@ -97,8 +102,8 @@ namespace cocaine_smasher_420
 
         public void Method(GameTime gameTime)
         {
-        //new Vector2(rand.Next(40,150),rand.Next(-40,40))
-        
+            new Vector2(rand.Next(40, 150), rand.Next(-40, 40));
+            
         
         }
         

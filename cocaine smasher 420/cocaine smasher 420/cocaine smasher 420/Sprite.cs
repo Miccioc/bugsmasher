@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocaine_smasher_420
+namespace BugSmasher
 {
     class Sprite
     {

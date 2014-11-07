@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocaine_smasher_420
+namespace BugSmasher
 {
     enum BugMoods
     {
@@ -33,18 +33,19 @@ namespace cocaine_smasher_420
 
         public override void Update(GameTime gameTime)
         {
-          if(Location.Y < -50 && velocity.Y <0) velocity *= new Vector2(1,-1);
-          if (Location.Y > 470 && velocity.Y > 0) velocity *= new Vector2(1, -1);
+
+            if (Location.Y < -50 && velocity.Y < 0) velocity *= new Vector2(1, -1);
+            if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(1, -1);
 
 
-          if (timeRemaining == 0.0f)
-          {
-              NewTarget();
-              timeRemaining = TimePerNewTarget;
-          }
+            if (timeRemaining == 0.0f)
+            {
+                NewTarget();
+                timeRemaining = TimePerNewTarget;
+            }
 
-          
-          timeRemaining = MathHelper.Max(0, timeRemaining - (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+            timeRemaining = MathHelper.Max(0, timeRemaining - (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             base.Update(gameTime);
         }
@@ -61,7 +62,7 @@ namespace cocaine_smasher_420
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-         /*   if (mood == BugMoods.Angry)
+   /*if (mood == BugMoods.Angry)
             {
                 this.TintColor = Color.Red;
                 this.Velocity *= new Vector2(1.1f, 1f);
@@ -75,8 +76,8 @@ namespace cocaine_smasher_420
             else
             {
                 this.TintColor = Color.White;
-            }
-            */
+            }*/
+          
             base.Draw(spriteBatch);
         }
     }

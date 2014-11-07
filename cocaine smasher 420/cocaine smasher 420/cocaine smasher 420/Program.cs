@@ -1,6 +1,6 @@
 using System;
 
-namespace cocaine_smasher_420
+namespace BugSmasher
 {
 #if WINDOWS || XBOX
     static class Program
