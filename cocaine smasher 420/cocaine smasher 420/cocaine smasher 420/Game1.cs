@@ -19,7 +19,7 @@ namespace BugSmasher
         Random rand = new Random(System.Environment.TickCount);
         List<Bug> bugs = new List<Bug>();
         int bugNum = 50;
-
+        Sprite hand;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -49,7 +49,10 @@ namespace BugSmasher
             background = Content.Load<Texture2D>("background");
             spritesheet = Content.Load<Texture2D>("spritesheet");
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            hand = new Sprite(new Vector2 (100,100),
+                spritesheet,
+                new Rectangle(136 , 199 , 180 ,48),
+                new Vector2(100,100));
             
             for (int i = 0; i < bugNum; i++)
             {
@@ -73,7 +76,10 @@ namespace BugSmasher
 
         protected override void Update(GameTime gameTime)
         {
-            IsMouseVisible = true;
+            MouseState ms = Mouse.GetState();
+            hand.Location = new Vector2(ms.X, ms.Y);
+            
+           
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -113,8 +119,7 @@ namespace BugSmasher
 
             spriteBatch.Begin();
             spriteBatch.Draw(background, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.White); // Draw the background at (0,0) - no crazy tinting
-
-
+            hand.Draw(spriteBatch);
             for (int i = 0; i < bugs.Count; i++)
             {
                 bugs[i].Draw(spriteBatch);

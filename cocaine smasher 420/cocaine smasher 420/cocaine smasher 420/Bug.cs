@@ -62,21 +62,21 @@ namespace BugSmasher
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-   /*if (mood == BugMoods.Angry)
-            {
-                this.TintColor = Color.Red;
-                this.Velocity *= new Vector2(1.1f, 1f);
+   ///if (mood == BugMoods.Angry)
+      ///      {
+           //     this.TintColor = Color.Red;
+            //    this.Velocity *= new Vector2(1.1f, 1f);
 
-                if (Velocity.Length() > 150)
-                {
-                    this.velocity.Normalize();
-                    this.velocity *= 150;
-                }
-            }
-            else
-            {
-                this.TintColor = Color.White;
-            }*/
+             //   if (Velocity.Length() > 150)
+              //  {
+                //    this.velocity.Normalize();
+                //    this.velocity *= 150;
+               // }
+          //  }
+//else
+           // {
+            //    this.TintColor = Color.White;
+           // }
           
             base.Draw(spriteBatch);
         }
