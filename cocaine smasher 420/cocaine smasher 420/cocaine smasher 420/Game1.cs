@@ -78,8 +78,8 @@ namespace BugSmasher
         {
             MouseState ms = Mouse.GetState();
             hand.Location = new Vector2(ms.X, ms.Y);
-            
-           
+        
+         
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -90,7 +90,8 @@ namespace BugSmasher
                 bugs[i].mood = BugMoods.Normal;
                 if (bugs[i].Location.X > this.Window.ClientBounds.Width) 
                 {
-                
+                    bugs[i].FlipHorizontal = true;
+                    bugs[i].Velocity *= new Vector2(-1, 1);
                 }
 
                 for (int j = 0; j < bugNum; j++)
@@ -119,12 +120,11 @@ namespace BugSmasher
 
             spriteBatch.Begin();
             spriteBatch.Draw(background, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.White); // Draw the background at (0,0) - no crazy tinting
-            hand.Draw(spriteBatch);
             for (int i = 0; i < bugs.Count; i++)
             {
                 bugs[i].Draw(spriteBatch);
             }
-
+            hand.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

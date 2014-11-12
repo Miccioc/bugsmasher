@@ -35,7 +35,7 @@ namespace BugSmasher
         {
 
             if (Location.Y < -50 && velocity.Y < 0) velocity *= new Vector2(1, -1);
-            if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(1, -1);
+            if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(-1, 1);
 
 
             if (timeRemaining == 0.0f)
