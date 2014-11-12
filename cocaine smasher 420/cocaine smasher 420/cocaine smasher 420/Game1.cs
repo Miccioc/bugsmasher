@@ -78,8 +78,12 @@ namespace BugSmasher
         {
             MouseState ms = Mouse.GetState();
             hand.Location = new Vector2(ms.X, ms.Y);
-        
-         
+
+            if (hand.IsBoxColliding(bugs[i].BoundingBoxRect) && ms.LeftButton == ButtonState.Pressed)
+            {
+                
+
+            }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
