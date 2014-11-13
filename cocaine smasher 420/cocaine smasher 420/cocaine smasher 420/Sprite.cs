@@ -11,7 +11,7 @@ namespace BugSmasher
     {
         public Texture2D Texture;
 
-        protected List<Rectangle> frames = new List<Rectangle>();
+        public List<Rectangle> frames = new List<Rectangle>();
         public int frameWidth = 0;
         public int frameHeight = 0;
         private int currentFrame;

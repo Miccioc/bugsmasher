@@ -79,9 +79,21 @@ namespace BugSmasher
             MouseState ms = Mouse.GetState();
             hand.Location = new Vector2(ms.X, ms.Y);
 
-            if (hand.IsBoxColliding(bugs[i].BoundingBoxRect) && ms.LeftButton == ButtonState.Pressed)
+            for(int i = 0; i < 50; i++)
             {
-                
+               // bugs[i].run == 0;
+                if (hand.IsBoxColliding(bugs[i].BoundingBoxRect) && ms.LeftButton == ButtonState.Pressed)
+                {
+                    bugs[i].frames[0] = new Rectangle(0, 120, 130, 130);
+                    bugs[i].Velocity *= 0;
+
+                    //bugs[i].run == 1;
+                }
+
+               // if (bugs[i].run == 1)
+               // {
+                //    bugs[i].Velocity *= 0;
+               // }
 
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

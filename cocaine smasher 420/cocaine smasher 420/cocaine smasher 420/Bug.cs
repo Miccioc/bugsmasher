@@ -80,5 +80,7 @@ namespace BugSmasher
           
             base.Draw(spriteBatch);
         }
+
+        public int run { get; set; }
     }
 }
