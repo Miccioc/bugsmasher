@@ -20,6 +20,7 @@ namespace BugSmasher
         public BugMoods mood = BugMoods.Normal;
         private Random rand = new Random((int)DateTime.UtcNow.Ticks);
         float timeRemaining = 0.0f;
+        public Boolean IsSplatted = false;
         float TimePerNewTarget = 0.20f;
         public Bug(
            Vector2 location,
@@ -33,21 +34,23 @@ namespace BugSmasher
 
         public override void Update(GameTime gameTime)
         {
-
-            if (Location.Y < -50 && velocity.Y < 0) velocity *= new Vector2(1, -1);
-            if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(-1, 1);
-
-
-            if (timeRemaining == 0.0f)
+            if (IsSplatted == false)
             {
-                NewTarget();
-                timeRemaining = TimePerNewTarget;
+                if (Location.Y < -50 && velocity.Y < 0) velocity *= new Vector2(1, -1);
+                if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(-1, 1);
+
+
+                if (timeRemaining == 0.0f)
+                {
+                    NewTarget();
+                    timeRemaining = TimePerNewTarget;
+                }
+
+
+                timeRemaining = MathHelper.Max(0, timeRemaining - (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                base.Update(gameTime);
             }
-
-
-            timeRemaining = MathHelper.Max(0, timeRemaining - (float)gameTime.ElapsedGameTime.TotalSeconds);
-
-            base.Update(gameTime);
         }
 
         public void NewTarget()

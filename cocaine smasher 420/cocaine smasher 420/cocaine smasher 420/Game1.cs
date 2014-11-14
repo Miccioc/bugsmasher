@@ -18,8 +18,10 @@ namespace BugSmasher
         Texture2D background, spritesheet;
         Random rand = new Random(System.Environment.TickCount);
         List<Bug> bugs = new List<Bug>();
-        int bugNum = 50;
+        int bugNum = 99;
         Sprite hand;
+        bool clicked = false;
+        bool canclick = true;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -79,21 +81,36 @@ namespace BugSmasher
             MouseState ms = Mouse.GetState();
             hand.Location = new Vector2(ms.X, ms.Y);
 
+
+            clicked = false;
+            if (ms.LeftButton== ButtonState.Pressed)
+            {
+                if (canclick == true)
+                {
+                    clicked = true;
+                    canclick = false;
+                }
+            }
+            if (ms.LeftButton != ButtonState.Pressed)
+            {
+                canclick = true;
+            }
             for(int i = 0; i < 50; i++)
             {
-               // bugs[i].run == 0;
-                if (hand.IsBoxColliding(bugs[i].BoundingBoxRect) && ms.LeftButton == ButtonState.Pressed)
+               
+                if (hand.IsBoxColliding(bugs[i].BoundingBoxRect) && clicked==true)
                 {
                     bugs[i].frames[0] = new Rectangle(0, 120, 130, 130);
                     bugs[i].Velocity *= 0;
+                    bugs[i].IsSplatted =true;
 
-                    //bugs[i].run == 1;
+                    
                 }
-
-               // if (bugs[i].run == 1)
-               // {
-                //    bugs[i].Velocity *= 0;
-               // }
+                
+               
+               
+                  
+              
 
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
