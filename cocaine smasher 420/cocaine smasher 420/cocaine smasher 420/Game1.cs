@@ -18,7 +18,7 @@ namespace BugSmasher
         Texture2D background, spritesheet;
         Random rand = new Random(System.Environment.TickCount);
         List<Bug> bugs = new List<Bug>();
-        int bugNum = 99;
+        int bugNum = 50;
         Sprite hand;
         bool clicked = false;
         bool canclick = true;
@@ -53,7 +53,7 @@ namespace BugSmasher
             spriteBatch = new SpriteBatch(GraphicsDevice);
             hand = new Sprite(new Vector2 (100,100),
                 spritesheet,
-                new Rectangle(136 , 199 , 180 ,48),
+                new Rectangle(135, 197, 48, 52),
                 new Vector2(100,100));
             
             for (int i = 0; i < bugNum; i++)
@@ -106,11 +106,10 @@ namespace BugSmasher
 
                     
                 }
-                
-               
-               
-                  
-              
+             }
+
+            if ( bugs[i].Location == new Vector2 (100.X))
+            {
 
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
