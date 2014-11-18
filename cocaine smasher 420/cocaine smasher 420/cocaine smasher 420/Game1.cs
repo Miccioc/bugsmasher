@@ -108,10 +108,7 @@ namespace BugSmasher
                 }
              }
 
-            if ( bugs[i].Location == new Vector2 (100.X))
-            {
-
-            }
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -120,12 +117,9 @@ namespace BugSmasher
             {
                 bugs[i].Update(gameTime);
                 bugs[i].mood = BugMoods.Normal;
-                if (bugs[i].Location.X > this.Window.ClientBounds.Width) 
-                {
-                    bugs[i].FlipHorizontal = true;
-                    bugs[i].Velocity *= new Vector2(-1, 1);
-                }
-
+                if (bugs[i].Location.X > this.Window.ClientBounds.Width)
+                    bugs[i].Location = new Vector2(-100,bugs[1].Location.Y);
+             
                 for (int j = 0; j < bugNum; j++)
                 {
                    
@@ -139,12 +133,7 @@ namespace BugSmasher
             base.Update(gameTime);
         }
 
-        public void Method(GameTime gameTime)
-        {
-            new Vector2(rand.Next(40, 150), rand.Next(-40, 40));
-            
-        
-        }
+       
         
         protected override void Draw(GameTime gameTime)
         {

@@ -21,7 +21,7 @@ namespace BugSmasher
         private Random rand = new Random((int)DateTime.UtcNow.Ticks);
         float timeRemaining = 0.0f;
         public Boolean IsSplatted = false;
-        float TimePerNewTarget = 0.20f;
+        float TimePerNewTarget = 2.00f;
         public Bug(
            Vector2 location,
            Texture2D texture,
@@ -36,9 +36,7 @@ namespace BugSmasher
         {
             if (IsSplatted == false)
             {
-                if (Location.Y < -50 && velocity.Y < 0) velocity *= new Vector2(1, -1);
-                if (Location.Y > 1700 && velocity.Y > 0) velocity *= new Vector2(-1, 1);
-
+              
 
                 if (timeRemaining == 0.0f)
                 {
@@ -55,10 +53,10 @@ namespace BugSmasher
 
         public void NewTarget()
         {
-            Vector2 target = new Vector2(Location.X + 400, Location.Y + rand.Next(-100, 100));
+            Vector2 target = new Vector2(Location.X + 400, rand.Next(0, 980));
             Vector2 vel = target - Location;
             vel.Normalize();
-            vel *= 90;
+            vel *= 300;
             Velocity = vel;
             Rotation = (float)Math.Atan2(vel.Y, vel.X);
         }
